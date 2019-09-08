@@ -1,0 +1,76 @@
+安装PHP
+
+获取PHP7.0的yum源
+rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+查看php7.0的扩展名称
+yum search php70w
+安装php
+yum install {写扩展名}
+yum install php70w php70w-fpm php70w-cli php70w-common php70w-devel php70w-gd php70w-pdo php70w-mysql php70w-mbstring php70w-bcmath
+
+
+
+搭建Tiny Tiny RSS
+
+启动        systemctl start docker
+docker run -d --link ttrssdb:db -p 8080:80 -e SELF_URL_PATH=http://34.92.250.112:8080 fischerman/docker-ttrss
+
+
+
+获取PHP7.0的yum源
+
+docker run -it --name ttrss --restart=always \
+--link ttrssdb:db  \
+-e SELF_URL_PATH=http://34.92.2.134/ttrss  \
+-e DB_USER=ttrss  \
+-e DB_PASS=ttrss  \
+-p 80:80  \
+-d wangqiru/ttrss
+
+
+
+find / -name "www.conf"
+
+find / -name "php7.0-fpm.sock"
+
+
+查找文件
+find / -name "config.php"
+
+ssr
+
+/etc/shadowsocks-r/config.json #配置文件
+service shadowsocksr restart #重启ssr
+
+sudo -s #获取root权限
+yum -y install wget #安装wget
+yum install net-tools -y && wget --no-check-certificate -O appex.sh https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh && bash appex.sh install
+wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh
+chmod +x shadowsocks-all.sh
+./shadowsocks-all.sh 2>&1 | tee shadowsocks-all.log
+
+
+Your Server IP        :  34.92.250.112
+Your Server Port      :  53
+Your Password         :  abcd00
+Your Protocol         :  auth_aes128_md5
+Your obfs             :  http_simple
+Your Encryption Method:  aes-128-ctr
+
+使用命令：
+
+启动：/etc/init.d/shadowsocks start
+
+停止：/etc/init.d/shadowsocks stop
+
+重启：/etc/init.d/shadowsocks restart
+
+状态：/etc/init.d/shadowsocks status
+
+
+
+配置文件路径：/etc/shadowsocks.json
+
+日志文件路径：/var/log/shadowsocks.log
+
+安装路径：/usr/local/shadowsocks/shadowsoks
